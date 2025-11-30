@@ -6,8 +6,6 @@ import { useLocation } from "react-router-dom";
 const SearchBar = () => {
   const { search, setSearch, showSearch, setShowSearch } = useContext(ShopContext);
   const location = useLocation();
-
-  // Only show if we're on /collection AND showSearch is true
   const shouldShow = showSearch && location.pathname.includes("collection");
 
   return shouldShow ? (

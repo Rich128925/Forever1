@@ -18,11 +18,11 @@ const Navbar = () => {
         });
       }
 
-      // Clear context, localStorage, cart
+      
       setToken('');
       localStorage.removeItem('token');
       setCartItems({});
-      navigate('/login'); // redirect to login
+      navigate('/login'); 
     } catch (error) {
       console.error('Logout failed:', error);
     }

@@ -13,7 +13,7 @@ const ShopContextProvider = ({ children }) => {
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState({});
   const [products, setProducts] = useState([]);
-  const [token, setToken] = useState(""); // JWT token
+  const [token, setToken] = useState(""); 
   const navigate = useNavigate();
 
   // Load token from localStorage on mount
@@ -58,7 +58,7 @@ const ShopContextProvider = ({ children }) => {
     fetchCartFromServer();
   }, [token]);
 
-  // ✅ Add to Cart
+  // Add to Cart
   const addToCart = async (itemId, size) => {
     if (!size) {
       toast.error("Please select a size");
@@ -93,7 +93,7 @@ const ShopContextProvider = ({ children }) => {
     }
   };
 
-  // ✅ Update Quantity
+  // Update Quantity
   const updateQuantity = async (itemId, size, quantity) => {
     const updatedCart = structuredClone(cartItems);
     if (!updatedCart[itemId]) updatedCart[itemId] = {};
@@ -115,7 +115,7 @@ const ShopContextProvider = ({ children }) => {
     }
   };
 
-  // ✅ Remove Item from Cart
+  // Remove Item from Cart
   const removeFromCart = async (itemId, size) => {
     const updatedCart = { ...cartItems };
     if (updatedCart[itemId] && updatedCart[itemId][size]) {
@@ -141,7 +141,7 @@ const ShopContextProvider = ({ children }) => {
     }
   };
 
-  // ✅ Clear Cart
+  // Clear Cart
   const clearCart = async () => {
     setCartItems({});
     localStorage.removeItem("cartItems");
@@ -161,7 +161,7 @@ const ShopContextProvider = ({ children }) => {
     }
   };
 
-  // ✅ Utility functions
+  // Utility functions
   const getCartCount = () => {
     let totalCount = 0;
     for (const itemId in cartItems) {
@@ -189,7 +189,7 @@ const ShopContextProvider = ({ children }) => {
     return subtotal > 100 ? subtotal : subtotal + delivery_fee;
   };
 
-  // ✅ Fetch products
+  // Fetch products
   const getProductsData = async () => {
     try {
       const response = await axios.get(`${backendUrl}/api/product/list`);

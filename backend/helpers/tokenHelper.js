@@ -10,15 +10,15 @@ export function generatedAccessToken(userId) {
   return jwt.sign(
     { _id: userId },
     process.env.SECRET_KEY_ACCESS_TOKEN || "defaultsecret",
-    { expiresIn: "15m" } // token expires in 15 minutes
+    { expiresIn: "15m" }
   );
 }
 
-// Generate JWT Refresh Token (optional)
+// Generate JWT Refresh Token
 export function generatedRefreshToken(userId) {
   return jwt.sign(
     { _id: userId },
     process.env.SECRET_KEY_REFRESH_TOKEN || "refreshsecret",
-    { expiresIn: "7d" } // token expires in 7 days
+    { expiresIn: "7d" }
   );
 }
