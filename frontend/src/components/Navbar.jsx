@@ -76,7 +76,7 @@ const Navbar = () => {
           alt="Search"
         />
 
-        {/* ✅ FIXED PROFILE DROPDOWN */}
+        {/* FIXED PROFILE DROPDOWN */}
         <div className="relative">
           <img
             src={assets.profile_icon}
