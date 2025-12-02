@@ -38,11 +38,13 @@ const ForgotPassword = () => {
   return (
     <form
       onSubmit={handleForgotPassword}
-      className="flex flex-col items-center w-[90%]sm:max-w-96 m-auto mt-14 gap-4 text-gray-800"
+      className="flex flex-col items-center w-[90%] sm:max-w-96 m-auto mt-14 gap-4 text-gray-800 px-4"
     >
       {/* Title */}
       <div className="inline-flex items-center gap-2 mb-2 mt-10">
-        <p className="prata-regular text-3xl">Forgot Password</p>
+        <p className="prata-regular text-2xl sm:text-3xl">
+          Forgot Password
+        </p>
         <hr className="border-none h-[1.5px] w-8 bg-gray-800" />
       </div>
 
@@ -51,7 +53,12 @@ const ForgotPassword = () => {
         onChange={(e) => setEmail(e.target.value)}
         value={email}
         type="email"
-        className="w-1/3 px-3 py-2 border border-gray-800"
+        className="
+          w-full sm:w-96
+          px-3 py-2
+          border border-gray-800
+          outline-none
+        "
         placeholder="Enter your email"
         required
       />
@@ -59,7 +66,13 @@ const ForgotPassword = () => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="bg-black text-white font-light px-8 py-2 mt-4 cursor-pointer"
+        disabled={loading}
+        className="
+          bg-black text-white font-light
+          px-8 py-2 mt-4
+          cursor-pointer
+          sm:w-auto
+        "
       >
         {loading ? "Sending..." : "Send Reset Link"}
       </button>
