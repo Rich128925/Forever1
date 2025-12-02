@@ -24,12 +24,18 @@ const ForgotPassword = () => {
       );
 
       if (data.success) {
-        toast.success("Password reset link sent to your email");
+        toast.success(data.message || "Password reset link sent to your email");
       } else {
         toast.error(data.message || "Failed to send reset link");
       }
     } catch (error) {
-      toast.error("Something went wrong");
+      // ✅ Show real backend error if available
+      const message =
+        error.response?.data?.message ||
+        error.message ||
+        "Something went wrong. Please try again.";
+      console.error("Forgot Password Error:", error.response || error);
+      toast.error(message);
     } finally {
       setLoading(false);
     }
@@ -72,6 +78,8 @@ const ForgotPassword = () => {
           px-8 py-2 mt-4
           cursor-pointer
           sm:w-auto
+          disabled:opacity-60
+          disabled:cursor-not-allowed
         "
       >
         {loading ? "Sending..." : "Send Reset Link"}
